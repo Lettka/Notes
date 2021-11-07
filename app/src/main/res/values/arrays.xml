@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="myNotes">
+        <item>Movies</item>
+        <item>Music</item>
+        <item>Clothes</item>
+        <item>Products</item>
+        <item>Recipe</item>
+    </string-array>
+    <string-array name="img_for_notes">
+        <item>@drawable/movie</item>
+        <item>@drawable/music</item>
+        <item>@drawable/clothes</item>
+        <item>@drawable/products</item>
+        <item>@drawable/recipe</item>
+    </string-array>
+</resources>
