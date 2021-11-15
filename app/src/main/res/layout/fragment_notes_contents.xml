@@ -25,25 +25,25 @@
             android:id="@+id/button_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/margin_fragment"
             android:text="back" />
 
         <Button
             android:id="@+id/button_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="settings" />
+            android:layout_margin="@dimen/margin_fragment"
+            android:text="@string/settings" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/margin_fragment"
             android:focusable="false"
             android:gravity="end"
             android:textColor="@color/teal_700"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_date"
             android:textStyle="italic"
             tools:text="11/11/2021" />
     </LinearLayout>
@@ -52,9 +52,9 @@
         android:id="@+id/caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/margin_fragment"
         android:textColor="@color/purple_700"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_size_caption"
         android:textStyle="bold"
         tools:text="caption" />
 
@@ -62,9 +62,9 @@
         android:id="@+id/notesContext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/margin_fragment"
         android:textColor="@color/purple_200"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_fragment"
         tools:text="text" />
 
     <FrameLayout

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_fragment">15dp</dimen>
+    <dimen name="text_size_fragment">20sp</dimen>
+    <dimen name="text_size_caption">30sp</dimen>
+    <dimen name="text_size_date">15sp</dimen>
+    <dimen name="text_size_caption_note">15sp</dimen>
+    <dimen name="text_size_context_note">10sp</dimen>
+    <dimen name="text_size_date_note">10sp</dimen>
+</resources>

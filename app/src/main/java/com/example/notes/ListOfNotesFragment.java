@@ -74,14 +74,14 @@ public class ListOfNotesFragment extends Fragment {
             //caption
             TextView textCaption = new TextView(getContext());
             textCaption.setText(notesList.get(i).getCaptionNotes());
-            textCaption.setTextSize(30);
+            textCaption.setTextSize(getResources().getDimension(R.dimen.text_size_caption_note));
             textCaption.setTextColor(Color.BLACK);
             textCaption.setTypeface(Typeface.DEFAULT_BOLD);
 
             //context
             TextView textContext = new TextView(getContext());
             textContext.setText(notesList.get(i).getContextNotes());
-            textContext.setTextSize(15);
+            textContext.setTextSize(getResources().getDimension(R.dimen.text_size_context_note));
             textContext.setTextColor(Color.GRAY);
             textContext.setMaxLines(1);
             textContext.setEllipsize(TextUtils.TruncateAt.END);
@@ -90,7 +90,7 @@ public class ListOfNotesFragment extends Fragment {
             TextView textDate = new TextView(getContext());
             textDate.setText(notesList.get(i).getDate());
             textDate.setId(i);
-            textDate.setTextSize(20);
+            textDate.setTextSize(getResources().getDimension(R.dimen.text_size_date_note));
             textDate.setTextColor(Color.GRAY);
             textDate.setLayoutParams(params1);
             textDate.setGravity(Gravity.CENTER_VERTICAL | Gravity.END);

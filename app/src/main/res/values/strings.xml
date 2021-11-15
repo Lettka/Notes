@@ -9,4 +9,5 @@
     <string name="back">back</string>
     <string name="set_theme">Set theme</string>
     <string name="MyThemeDefault">Default</string>
+    <string name="settings">settings</string>
 </resources>
