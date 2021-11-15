@@ -14,6 +14,7 @@ public class Notes implements Parcelable {
     private String captionNotes;
     private String contextNotes;
     private String date;
+    private int imagePosition;
     public List<Notes> notesList = new ArrayList<>();
 
     public Notes() {
@@ -23,9 +24,10 @@ public class Notes implements Parcelable {
         createListOfNotes();
     }
 
-    public Notes(String captionNotes, String contextNotes) {
+    public Notes(String captionNotes, String contextNotes, int imagePosition) {
         this.captionNotes = captionNotes;
         this.contextNotes = contextNotes;
+        this.imagePosition = imagePosition;
         this.date = getCurrentDate();
     }
 
@@ -33,22 +35,7 @@ public class Notes implements Parcelable {
         captionNotes = in.readString();
         contextNotes = in.readString();
         date = in.readString();
-    }
-
-    private void createListOfNotes(){
-       notesList.add(new Notes("Movies", "Movie is a recording of moving images that tells a story and that people watch on a screen or television : motion picture."));
-       notesList.add(new Notes("Music", "Music is the art of arranging sounds in time through the elements of melody, harmony, rhythm, and timbre."));
-       notesList.add(new Notes("Clothes", "- T-shirt\n- sweater\n- jacket\n- coat\n- jeans"));
-       notesList.add(new Notes("Products", "- pear\n- tangerine\n- almonds\n- cauliflower\n- chocolate"));
-       notesList.add(new Notes("Recipe", "Heat oven to 200C. Cook the vegetables in a casserole dish for 15 mins. Tip in the beans and tomatoes, season, and cook for another 10-15 mins until piping hot."));
-    }
-
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(captionNotes);
-        dest.writeString(contextNotes);
-        dest.writeString(date);
+        imagePosition = in.readInt();
     }
 
     @Override
@@ -67,6 +54,34 @@ public class Notes implements Parcelable {
             return new Notes[size];
         }
     };
+
+    private void createListOfNotes() {
+        notesList.add(new Notes("Movies", "Movie is a recording of moving images that tells a story and that people watch on a screen or television : motion picture.", 0));
+        notesList.add(new Notes("Music", "Music is the art of arranging sounds in time through the elements of melody, harmony, rhythm, and timbre.", 1));
+        notesList.add(new Notes("Clothes", "- T-shirt\n- sweater\n- jacket\n- coat\n- jeans", 2));
+        notesList.add(new Notes("Products", "- pear\n- tangerine\n- almonds\n- cauliflower\n- chocolate", 3));
+        notesList.add(new Notes("Recipe", "Heat oven to 200C. Cook the vegetables in a casserole dish for 15 mins. Tip in the beans and tomatoes, season, and cook for another 10-15 mins until piping hot.", 4));
+    }
+
+    public Notes getCurrentNote(int position){
+        return notesList.get(position);
+    }
+
+    public int getImagePosition() {
+        return imagePosition;
+    }
+
+    public void setImagePosition(int imagePosition) {
+        this.imagePosition = imagePosition;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(captionNotes);
+        dest.writeString(contextNotes);
+        dest.writeString(date);
+    }
+
 
     public String getCurrentDate() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

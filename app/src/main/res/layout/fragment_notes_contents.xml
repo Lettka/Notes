@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/design_default_color_background"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
     tools:context=".NotesContentsFragment">
+
 
     <ImageView
         android:id="@+id/image_view"
@@ -16,17 +17,36 @@
         android:scaleType="centerCrop"
         tools:src="@drawable/movie" />
 
-    <TextView
-        android:id="@+id/date"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:focusable="false"
-        android:gravity="end"
-        android:textColor="@color/teal_700"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        tools:text="11/11/2021" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="back" />
+
+        <Button
+            android:id="@+id/button_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="settings" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:focusable="false"
+            android:gravity="end"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            tools:text="11/11/2021" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/caption"
@@ -47,4 +67,9 @@
         android:textSize="20sp"
         tools:text="text" />
 
+    <FrameLayout
+        android:id="@+id/fragment_container2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent" />
 </LinearLayout>
