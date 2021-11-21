@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
@@ -22,26 +22,20 @@ import java.util.Locale;
 
 public class NotesContentsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_POSITION = "ARG_POSITION";
-    public static final String LIST_OF_NOTES = "LIST_OF_NOTES";
+    public static final String CURRENT_NOTE = "CURRENT_NOTE";
 
     final Calendar myCalendar = Calendar.getInstance();
 
-    // TODO: Rename and change types of parameters
-    private int position = -1;
     private Notes note;
 
     public NotesContentsFragment() {
         // Required empty public constructor
     }
 
-    public static NotesContentsFragment newInstance(int position, Notes note) {
+    public static NotesContentsFragment newInstance(Notes note) {
         NotesContentsFragment fragment = new NotesContentsFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_POSITION, position);
-        args.putParcelable(LIST_OF_NOTES, note);
+        args.putParcelable(CURRENT_NOTE, note);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,8 +44,7 @@ public class NotesContentsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            position = getArguments().getInt(ARG_POSITION);
-            note = getArguments().getParcelable(LIST_OF_NOTES);
+            note = getArguments().getParcelable(CURRENT_NOTE);
         } else {
             note = new Notes();
         }
@@ -66,6 +59,19 @@ public class NotesContentsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Button buttonBack = view.findViewById(R.id.button_back);
+        buttonBack.setOnClickListener(view1 -> {
+            requireActivity().getSupportFragmentManager().popBackStack();
+        });
+        Button buttonSettings = view.findViewById(R.id.button_settings);
+        buttonSettings.setOnClickListener(view1 -> {
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .addToBackStack(null)
+                    .add(R.id.fragment_container2, new SettingsFragment())
+                    .commit();
+        });
 
         DatePickerDialog.OnDateSetListener datePicker = (view1, year, monthOfYear, dayOfMonth) -> {
             // TODO Auto-generated method stub
@@ -89,20 +95,20 @@ public class NotesContentsFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         TextView date = (TextView) view.findViewById(R.id.date);
         date.setText(sdf.format(myCalendar.getTime()));
-        note.notesList.get(position).setDate(String.valueOf(date.getText()));
+        note.setDate(String.valueOf(date.getText()));
     }
 
 
     private void initView(View view) {
         ImageView imageView = view.findViewById(R.id.image_view);
         TypedArray images = getResources().obtainTypedArray(R.array.img_for_notes);
-        imageView.setImageResource(images.getResourceId(position, 0));
+        imageView.setImageResource(images.getResourceId(note.getImagePosition(), 0));
         TextView date = view.findViewById(R.id.date);
-        date.setText(note.notesList.get(position).getDate());
+        date.setText(note.getDate());
         TextView caption = view.findViewById(R.id.caption);
-        caption.setText(note.notesList.get(position).getCaptionNotes());
+        caption.setText(note.getCaptionNotes());
         MultiAutoCompleteTextView notesContext = view.findViewById(R.id.notesContext);
-        notesContext.setText(note.notesList.get(position).getContextNotes());
+        notesContext.setText(note.getContextNotes());
         images.recycle();
     }
 }

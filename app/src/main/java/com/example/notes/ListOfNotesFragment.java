@@ -16,13 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListOfNotesFragment extends Fragment {
 
-    public static final String CURRENT_POSITION = "CURRENT_POSITION";
-    public static final String LIST_OF_NOTES = "LIST_OF_NOTES";
+    public static final String CURRENT_NOTE = "CURRENT_NOTE";
     private int currentPosition = -1;
     private Notes notes;
 
@@ -33,7 +31,6 @@ public class ListOfNotesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
     }
 
     @Override
@@ -48,8 +45,7 @@ public class ListOfNotesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (savedInstanceState != null) {
-            currentPosition = savedInstanceState.getInt(CURRENT_POSITION, -1);
-            notes = savedInstanceState.getParcelable(LIST_OF_NOTES);
+            notes = savedInstanceState.getParcelable(CURRENT_NOTE);
         } else {
             notes = new Notes();
         }
@@ -78,14 +74,14 @@ public class ListOfNotesFragment extends Fragment {
             //caption
             TextView textCaption = new TextView(getContext());
             textCaption.setText(notesList.get(i).getCaptionNotes());
-            textCaption.setTextSize(30);
+            textCaption.setTextSize(getResources().getDimension(R.dimen.text_size_caption_note));
             textCaption.setTextColor(Color.BLACK);
             textCaption.setTypeface(Typeface.DEFAULT_BOLD);
 
             //context
             TextView textContext = new TextView(getContext());
             textContext.setText(notesList.get(i).getContextNotes());
-            textContext.setTextSize(15);
+            textContext.setTextSize(getResources().getDimension(R.dimen.text_size_context_note));
             textContext.setTextColor(Color.GRAY);
             textContext.setMaxLines(1);
             textContext.setEllipsize(TextUtils.TruncateAt.END);
@@ -94,7 +90,7 @@ public class ListOfNotesFragment extends Fragment {
             TextView textDate = new TextView(getContext());
             textDate.setText(notesList.get(i).getDate());
             textDate.setId(i);
-            textDate.setTextSize(20);
+            textDate.setTextSize(getResources().getDimension(R.dimen.text_size_date_note));
             textDate.setTextColor(Color.GRAY);
             textDate.setLayoutParams(params1);
             textDate.setGravity(Gravity.CENTER_VERTICAL | Gravity.END);
@@ -106,7 +102,7 @@ public class ListOfNotesFragment extends Fragment {
             linearLayoutNotes.addView(notesContext);
             linearLayoutNotes.addView(textDate);
 
-            final int position = i;
+            final int position = notesList.get(i).getImagePosition();
             linearLayoutNotes.setOnClickListener(v -> {
                 currentPosition = position;
                 openNotes(position);
@@ -129,21 +125,16 @@ public class ListOfNotesFragment extends Fragment {
             }
         }
         for (int i = 0; i < notesList.size(); i++) {
-            ((TextView)getView().findViewById(i)).setText(notesList.get(i).getDate());
+            ((TextView) getView().findViewById(i)).setText(notesList.get(i).getDate());
         }
     }
 
     private void openNotes(int position) {
-        if (isLand()) {
-            openNotesLand(position);
-        } else {
-            openNotesPort(position);
-        }
-
+        openNotesPort(position);
     }
 
     private void openNotesPort(int position) {
-        NotesContentsFragment fragment = NotesContentsFragment.newInstance(position, notes);
+        NotesContentsFragment fragment = NotesContentsFragment.newInstance(notes.getCurrentNote(position));
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_container, fragment)
@@ -151,22 +142,9 @@ public class ListOfNotesFragment extends Fragment {
                 .commit();
     }
 
-    private void openNotesLand(int position) {
-        NotesContentsFragment fragment = NotesContentsFragment.newInstance(position, notes);
-        requireActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.fragment_container2, fragment)
-                .commit();
-    }
-
-    private boolean isLand() {
-        return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
-    }
-
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(CURRENT_POSITION, currentPosition);
-        outState.putParcelable(LIST_OF_NOTES, notes);
+        outState.putParcelable(CURRENT_NOTE, notes);
     }
 }
