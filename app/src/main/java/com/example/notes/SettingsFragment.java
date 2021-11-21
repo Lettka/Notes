@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
@@ -29,8 +32,19 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_settings, container, false);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        MenuItem menuItem1 = menu.findItem(R.id.action_about);
+        MenuItem menuItem2 = menu.findItem(R.id.action_settings);
+        if (menuItem1 != null) {
+            menuItem1.setVisible(true);
+            menuItem2.setVisible(false);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -52,7 +66,7 @@ public class SettingsFragment extends Fragment {
             requireActivity().recreate();
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container2, new SettingsFragment())
+                    .replace(R.id.fragment_container, new SettingsFragment())
                     .addToBackStack(null)
                     .commit();
         });
@@ -61,7 +75,7 @@ public class SettingsFragment extends Fragment {
             requireActivity().recreate();
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container2, new SettingsFragment())
+                    .replace(R.id.fragment_container, new SettingsFragment())
                     .addToBackStack(null)
                     .commit();
         });
@@ -70,12 +84,12 @@ public class SettingsFragment extends Fragment {
             requireActivity().recreate();
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container2, new SettingsFragment())
+                    .replace(R.id.fragment_container, new SettingsFragment())
                     .addToBackStack(null)
                     .commit();
         });
         view.findViewById(R.id.button_back_to_note).setOnClickListener(view1 -> {
-            getParentFragmentManager().popBackStack();
+            requireActivity().getSupportFragmentManager().popBackStack();
         });
     }
 

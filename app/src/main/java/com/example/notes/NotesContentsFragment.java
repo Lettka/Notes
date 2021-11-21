@@ -9,11 +9,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -56,21 +60,16 @@ public class NotesContentsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_notes_contents, container, false);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initPopUp(view);
+
         Button buttonBack = view.findViewById(R.id.button_back);
         buttonBack.setOnClickListener(view1 -> {
             requireActivity().getSupportFragmentManager().popBackStack();
-        });
-        Button buttonSettings = view.findViewById(R.id.button_settings);
-        buttonSettings.setOnClickListener(view1 -> {
-            getChildFragmentManager()
-                    .beginTransaction()
-                    .addToBackStack(null)
-                    .add(R.id.fragment_container2, new SettingsFragment())
-                    .commit();
         });
 
         DatePickerDialog.OnDateSetListener datePicker = (view1, year, monthOfYear, dayOfMonth) -> {
@@ -88,6 +87,26 @@ public class NotesContentsFragment extends Fragment {
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
         });
         initView(view);
+    }
+
+    private void initPopUp(View view) {
+        ImageView imageView = view.findViewById(R.id.image_view);
+        imageView.setOnClickListener(v -> {
+            PopupMenu popupMenu = new PopupMenu(requireActivity(), v);
+            requireActivity().getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
+            popupMenu.setOnMenuItemClickListener(menuItem -> {
+                int id = menuItem.getItemId();
+                if (id == R.id.action_popup_clear) {
+                    imageView.setImageResource(0);
+                    return true;
+                } else if (id == R.id.action_popup_exit) {
+                    requireActivity().onBackPressed();
+                    return true;
+                }
+                return false;
+            });
+            popupMenu.show();
+        });
     }
 
     private void updateLabel(View view) {
