@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Notes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Notes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,36 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/teal_200</item>
+        <item name="radioButtonStyle">@style/Widget.App.RadioButtonDefault</item>
+    </style>
+
+    <style name="MyThemeBlueberry" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/mazarine</item>
+        <item name="colorOnPrimary">@color/light_blue</item>
+        <item name="colorPrimaryDark">@color/blue</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="android:textColor">@color/light_blue</item>
+        <item name="radioButtonStyle">@style/Widget.App.RadioButtonBlueberry</item>
+    </style>
+
+    <style name="MyThemePear" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/umber</item>
+        <item name="colorOnPrimary">@color/yellow_pear</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/gold</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="radioButtonStyle">@style/Widget.App.RadioButtonPear</item>
+    </style>
+    <style name="Widget.App.RadioButtonPear" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="Widget.App.RadioButtonBlueberry" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/navy_blue</item>
+    </style>
+
+    <style name="Widget.App.RadioButtonDefault" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/teal_200</item>
     </style>
 </resources>

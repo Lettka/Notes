@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">Notes</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="set_date">set date</string>
+    <string name="date">Date</string>
+    <string name="MyThemeBlueberry">Blueberry</string>
+    <string name="MyThemePear">Pear</string>
+    <string name="back">back</string>
+    <string name="set_theme">Set theme</string>
+    <string name="MyThemeDefault">Default</string>
+    <string name="settings">settings</string>
+    <string name="about">about</string>
+    <string name="exit">exit</string>
+    <string name="note_storage_app">note storage app</string>
+    <string name="header">header</string>
+    <string name="navigation_drawer_close">navigation_drawer_close</string>
+    <string name="navigation_drawer_open">navigation_drawer_open</string>
+    <string name="clear">clear</string>
+    <string name="name">name</string>
 </resources>

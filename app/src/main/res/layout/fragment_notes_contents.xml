@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    tools:context=".NotesContentsFragment">
+
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/movie" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_fragment"
+            android:text="back" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_fragment"
+            android:focusable="false"
+            android:gravity="end"
+            android:textColor="@color/teal_700"
+            android:textSize="@dimen/text_size_date"
+            android:textStyle="italic"
+            tools:text="11/11/2021" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_fragment"
+        android:textColor="@color/purple_700"
+        android:textSize="@dimen/text_size_caption"
+        android:textStyle="bold"
+        tools:text="caption" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/notesContext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_fragment"
+        android:textColor="@color/purple_200"
+        android:textSize="@dimen/text_size_fragment"
+        tools:text="text" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent" />
+</LinearLayout>
