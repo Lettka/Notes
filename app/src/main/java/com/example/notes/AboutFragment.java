@@ -72,6 +72,7 @@ public class AboutFragment extends Fragment {
         MenuItem menuItem2 = menu.findItem(R.id.action_settings);
         if (menuItem1 != null) {
             menuItem1.setVisible(false);
+        } else if (menuItem2 != null) {
             menuItem2.setVisible(true);
         }
         super.onCreateOptionsMenu(menu, inflater);

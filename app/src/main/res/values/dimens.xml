@@ -7,4 +7,5 @@
     <dimen name="text_size_caption_note">15sp</dimen>
     <dimen name="text_size_context_note">10sp</dimen>
     <dimen name="text_size_date_note">10sp</dimen>
+    <dimen name="minHeight">48dp</dimen>
 </resources>

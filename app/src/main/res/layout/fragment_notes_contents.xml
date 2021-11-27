@@ -26,7 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_fragment"
-            android:text="back" />
+            android:text="@string/back" />
+
+        <Button
+            android:id="@+id/button_open_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_fragment"
+            android:text="@string/open_img" />
 
         <TextView
             android:id="@+id/date"
@@ -35,7 +42,7 @@
             android:layout_margin="@dimen/margin_fragment"
             android:focusable="false"
             android:gravity="end"
-            android:textColor="@color/teal_700"
+            android:textColor="#00838F"
             android:textSize="@dimen/text_size_date"
             android:textStyle="italic"
             tools:text="11/11/2021" />
@@ -51,14 +58,36 @@
         android:textStyle="bold"
         tools:text="caption" />
 
-    <MultiAutoCompleteTextView
+    <Button
+        android:id="@+id/set_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_fragment"
+        android:text="@string/set_caption" />
+
+        <MultiAutoCompleteTextView
         android:id="@+id/notesContext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_fragment"
+        android:minHeight="@dimen/minHeight"
         android:textColor="@color/purple_200"
         android:textSize="@dimen/text_size_fragment"
         tools:text="text" />
+
+    <Button
+        android:id="@+id/show_bottom_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_fragment"
+        android:text="@string/show_bottom_sheet" />
+
+    <Button
+        android:id="@+id/show_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_fragment"
+        android:text="@string/show_notification" />
 
     <FrameLayout
         android:id="@+id/fragment_container2"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/edit_caption_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_fragment"
+        android:text="@string/enter_text"
+        android:textSize="@dimen/text_size_caption_note" />
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp" />
+
+    <Button
+        android:id="@+id/apply_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/margin_fragment"
+        android:text="@string/apply" />
+</LinearLayout>

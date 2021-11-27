@@ -3,6 +3,7 @@ package com.example.notes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -11,8 +12,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,7 +80,18 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 return true;
             } else if (id == R.id.action_exit) {
-                finish();
+                new AlertDialog.Builder(this)
+                        .setCancelable(true)
+                        .setTitle("Exit")
+                        .setMessage("Do you want to close app?")
+                        .setPositiveButton("Yes", (dialogInterface, i) -> {
+                            finish();
+                            Toast.makeText(this, "Bye!", Toast.LENGTH_SHORT).show();
+                        })
+                        .setNegativeButton("No",(dialogInterface, i) -> {
+                            Toast.makeText(this, "Let's write one more note", Toast.LENGTH_SHORT).show();
+                        })
+                        .show();
                 return true;
             }
             return false;
@@ -143,7 +158,18 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
             return true;
         } else if (id == R.id.action_exit) {
-            finish();
+            new AlertDialog.Builder(this)
+                    .setCancelable(true)
+                    .setTitle("Exit")
+                    .setMessage("Do you want to close app?")
+                    .setPositiveButton("Yes", (dialogInterface, i) -> {
+                        finish();
+                        Toast.makeText(this, "Bye!", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("No",(dialogInterface, i) -> {
+                        Toast.makeText(this, "Let's write one more note", Toast.LENGTH_SHORT).show();
+                    })
+                    .show();
             return true;
         }
         return super.onOptionsItemSelected(item);

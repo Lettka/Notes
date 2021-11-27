@@ -43,7 +43,6 @@ public class ListOfNotesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         if (savedInstanceState != null) {
             notes = savedInstanceState.getParcelable(CURRENT_NOTE);
         } else {
