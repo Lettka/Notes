@@ -4,10 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout-land/activity_main.xml" value="0.17372134038800705" />
-        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/alertdialog_change_text.xml" value="0.2375" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/fragment_about.xml" value="0.33" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/fragment_image.xml" value="0.1766304347826087" />
         <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/fragment_list_of_notes.xml" value="0.2" />
-        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/fragment_notes_contents.xml" value="0.1" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/fragment_notes_contents.xml" value="0.22" />
         <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/fragment_settings.xml" value="0.20520833333333333" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/layout/header.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/menu/drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/menu/main.xml" value="0.20520833333333333" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/menu/main_manu.xml" value="0.26197916666666665" />
+        <entry key="..\:/AndroidProdjects/Notes/app/src/main/res/menu/popup.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
